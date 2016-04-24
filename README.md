@@ -1,7 +1,7 @@
-# 23-Net
+# TwentyThree.Net
 
-The TwentyThree.Net API Library is a .Net Library for accessing the 23 API. It's still under development but should work with the most methods of the 23 API. 
-It is written entirely in C# and it's heavily based on Flickr.Net from Sam Judson (https://github.com/samjudson/flickr-net).
+The TwentyThree.Net API Library is a .Net Library for accessing the 23 (http://www.23hq.com) API. This library is still under development but should work with the most methods of the 23 API. 
+It is written entirely in C# and it's heavily based on Flickr.Net from Sam Judson (https://github.com/samjudson/flickr-net). Thanks for the good work on flickr-net.
 
 I have modified his version and deleted all references to Flickr and Zoomr. FlickrNet contains code to connect to 23, but 
 there are lots of URLs which are hardcoded to Flickr and also Flickr.Net is changing to OAuth which 23 doesn't support. So

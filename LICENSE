@@ -1,13 +1,41 @@
+TwentyThree.Net API Library
 Copyright 2016 Daniel Isenmann
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+(based on Flickr.Net from Sam Judson (https://github.com/samjudson/flickr-net))
 
-    http://www.apache.org/licenses/LICENSE-2.0
+-------------------------------
+All source code and information supplied as part of the TwentyThree .Net API Library is copyright to its contributers.
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+The source code has been released under a dual license - meaning you can use either licensed version of the library with your code.
+
+-------------------------------
+LGPL 2.1 License
+-------------------------------
+It is released under the LGPL (GNU Lesser General Public License) 2.1 License, 
+a copy of which can be found at the link below.
+https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
+
+It is also included in this project as License-LGPL-2.1.txt
+
+-------------------------------
+Apache 2.0 License
+-------------------------------
+It is released under the Apache 2.0 License, a copy of which can be found at the link below.
+http://www.apache.org/licenses/LICENSE-2.0
+
+It is also included in this project as License-Apache-2.0.txt
+
+-------------------------------
+Distribution/Contribution
+-------------------------------
+
+You are free to distribute copies of this Program in its compiled, unaltered form, including, 
+but not limited to using it (in library form) in other .Net application, without use of this license.
+
+You are free to modify this code, under the agreements laid out in these licenses.
+
+-------------------------------
+Exception: 23 API Key
+-------------------------------
+I do not have permission to include a 23 API Key in any distribution which includes source code.
+If I do by accident then it is not included in the above license and should not be used. 

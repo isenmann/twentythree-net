@@ -159,9 +159,7 @@ namespace TwentyThreeNet
 
         private string UploadData(Stream imageStream, string fileName, Uri uploadUri, Dictionary<string, string> parameters)
         {
-            var boundary = "FLICKR_MIME_" + DateTime.Now.ToString("yyyyMMddhhmmss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
-
-            var authHeader = String.Empty; // TwentyThreeResponder.OAuthCalculateAuthHeader(parameters);
+            var boundary = "TWENTYTHREE_MIME_" + DateTime.Now.ToString("yyyyMMddhhmmss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
             var dataBuffer = CreateUploadData(imageStream, fileName, parameters, boundary);
             
             var req = (HttpWebRequest)WebRequest.Create(uploadUri);
@@ -169,15 +167,10 @@ namespace TwentyThreeNet
             if (Proxy != null) req.Proxy = Proxy;
             req.Timeout = HttpTimeout;
             req.ContentType = "multipart/form-data; boundary=" + boundary;
-
-            if (!string.IsNullOrEmpty(authHeader))
-            {
-                req.Headers["Authorization"] = authHeader;
-            }
-
+            
             req.AllowWriteStreamBuffering = false;
             req.SendChunked = true;
-            //req.ContentLength = dataBuffer.Length;
+            req.ContentLength = dataBuffer.Length.Value;
 
             using (var reqStream = req.GetRequestStream())
             {

@@ -1,0 +1,7 @@
+﻿################################################################################
+# Diese .gitignore-Datei wurde von Microsoft(R) Visual Studio automatisch erstellt.
+################################################################################
+
+/TwentyThreeNet/obj/Debug
+/TwentyThreeNet/bin/Debug
+/.vs/TwentyThreeNet/v14/.suo

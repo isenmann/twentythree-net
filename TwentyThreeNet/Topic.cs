@@ -107,7 +107,7 @@ namespace TwentyThreeNet
         {
             get
             {
-                return UtilityMethods.BuddyIcon(AuthorIconServer, AuthorIconFarm, AuthorUserId);
+                return UtilityMethods.BuddyIcon(AuthorName);
             }
         }
 

@@ -41,7 +41,7 @@ namespace TwentyThreeNet
         public string IconUrl
         {
             get {
-                return UtilityMethods.BuddyIcon(IconServer, IconFarm, MemberId);
+                return UtilityMethods.BuddyIcon(UserName);
             }
         }
 

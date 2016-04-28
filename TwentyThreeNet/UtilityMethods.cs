@@ -577,16 +577,27 @@ namespace TwentyThreeNet
         /// <summary>
         /// Returns the buddy icon for a given set of server, farm and userid. If no server is present then returns the standard buddy icon.
         /// </summary>
-        /// <param name="server"></param>
-        /// <param name="farm"></param>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public static string BuddyIcon(string server, string farm, string userId)
+        public static string BuddyIcon(string userId)
         {
-            if (string.IsNullOrEmpty(server) || server == "0")
+            if (string.IsNullOrEmpty(userId))
                 return "http://www.23hq.com/images/a/buddy";
             else
                 return string.Format(System.Globalization.CultureInfo.InvariantCulture, "http://www.23hq.com/{0}/a/buddy", userId);
+        }
+
+        /// <summary>
+        /// Returns the group icon for a given groupid.
+        /// </summary>
+        /// <param name="groupId"></param>
+        /// <returns></returns>
+        public static string GroupIcon(string groupId)
+        {
+            if (string.IsNullOrEmpty(groupId))
+                return "http://www.23hq.com/photogroup/a/buddy";
+            else
+                return string.Format(System.Globalization.CultureInfo.InvariantCulture, "http://www.23hq.com/photogroup/{0}/buddy", groupId);
         }
 
         /// <summary>

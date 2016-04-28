@@ -128,7 +128,7 @@ namespace TwentyThreeNet
         {
             get
             {
-                return UtilityMethods.BuddyIcon(IconServer, IconFarm, GroupId);
+                return UtilityMethods.BuddyIcon(GroupName);
             }
         }
 

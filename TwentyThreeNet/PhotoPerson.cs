@@ -74,7 +74,7 @@ namespace TwentyThreeNet
         {
             get
             {
-                return UtilityMethods.BuddyIcon(IconServer, IconFarm, UserId);
+                return UtilityMethods.BuddyIcon(UserName);
             }
         }
 

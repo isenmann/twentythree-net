@@ -56,7 +56,7 @@ namespace TwentyThreeNet
         {
             get
             {
-                return UtilityMethods.BuddyIcon(IconServer, IconFarm, UserId);
+                return UtilityMethods.BuddyIcon(UserName);
             }
         }
 
@@ -76,6 +76,16 @@ namespace TwentyThreeNet
         public bool? IsFamily { get; set; }
 
         /// <summary>
+        /// Is this user marked a family contact?
+        /// </summary>
+        public bool? InViewer { get; set; }
+
+        /// <summary>
+        /// Is this user marked a family contact?
+        /// </summary>
+        public bool? ShowPrivate { get; set; }
+
+        /// <summary>
         /// Unsure how to even set this!
         /// </summary>
         public bool? IsIgnored { get; set; }
@@ -89,6 +99,7 @@ namespace TwentyThreeNet
             {
                 switch (reader.LocalName)
                 {
+                    case "id":
                     case "nsid":
                         UserId = reader.Value;
                         break;
@@ -101,7 +112,7 @@ namespace TwentyThreeNet
                     case "iconfarm":
                         IconFarm = reader.Value;
                         break;
-                    case "ignored":
+                    case "ignore":
                         IsIgnored = reader.Value == "0";
                         break;
                     case "realname":
@@ -126,6 +137,12 @@ namespace TwentyThreeNet
                         break;
                     case "ispro":
                         IsPro = reader.Value == "1";
+                        break;
+                    case "inviewer":
+                        InViewer = reader.Value == "1";
+                        break;
+                    case "showprivate":
+                        ShowPrivate = reader.Value == "1";
                         break;
                     default:
                         UtilityMethods.CheckParsingException(reader);

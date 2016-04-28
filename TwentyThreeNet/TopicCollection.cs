@@ -67,7 +67,7 @@ namespace TwentyThreeNet
         /// </summary>
         public string GroupIconUrl
         {
-            get { return UtilityMethods.BuddyIcon(GroupIconServer, GroupIconFarm, GroupId); }
+            get { return UtilityMethods.BuddyIcon(GroupName); }
         }
 
         void ITwentyThreeParsable.Load(System.Xml.XmlReader reader)

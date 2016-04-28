@@ -36,9 +36,9 @@ namespace TwentyThreeNet
             // If performing one of the old 'flickr.auth' methods then use old authentication details.
             var method = parameters["method"];
 
-            if (method.StartsWith("flickr.auth", StringComparison.Ordinal))
+            if (!string.IsNullOrEmpty(AuthToken))
             {
-                if (!string.IsNullOrEmpty(AuthToken)) { parameters["auth_token"] = AuthToken; }
+                parameters["auth_token"] = AuthToken;
             }
             
             var url = CalculateUri(parameters, !string.IsNullOrEmpty(sharedSecret));

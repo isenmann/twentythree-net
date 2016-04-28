@@ -141,7 +141,7 @@ namespace TwentyThreeNet
         {
             get
             {
-                return UtilityMethods.BuddyIcon(OwnerServer, OwnerFarm, OwnerId);
+                return UtilityMethods.BuddyIcon(OwnerName);
             }
         }
 

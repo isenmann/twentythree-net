@@ -121,7 +121,7 @@ namespace TwentyThreeNet
         {
             get
             {
-                return UtilityMethods.BuddyIcon(AuthorIconServer, AuthorIconFarm, AuthorUserId);
+                return UtilityMethods.BuddyIcon(AuthorName);
             }
         }
 
@@ -132,7 +132,7 @@ namespace TwentyThreeNet
         {
             get
             {
-                return UtilityMethods.BuddyIcon(GroupIconServer, GroupIconFarm, GroupId);
+                return UtilityMethods.BuddyIcon(GroupName);
             }
         }
 

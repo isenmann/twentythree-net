@@ -31,29 +31,9 @@ namespace TwentyThreeNet
         public string Label { get; set; }
 
         /// <summary>
-        /// The raw EXIF data.
+        /// The EXIF data.
         /// </summary>
-        public string Raw { get; set; }
-
-        /// <summary>
-        /// An optional clean version of the <see cref="Raw"/> property.
-        /// May be null if the <c>Raw</c> property is in a suitable format already.
-        /// </summary>
-        public string Clean { get; set; }
-
-        /// <summary>
-        /// Get the value of the <see cref="Clean"/> property, or the value of <see cref="Raw"/> if Clean is empty or null.
-        /// </summary>
-        public string CleanOrRaw
-        {
-            get
-            {
-                if( string.IsNullOrEmpty( Clean ) )
-                    return Raw;
-                else
-                    return Clean;
-            }
-        }
+        public string Text { get; set; }
 
         void ITwentyThreeParsable.Load(System.Xml.XmlReader reader)
         {
@@ -81,27 +61,14 @@ namespace TwentyThreeNet
                         break;
                 }
             }
-
+            
             reader.Read();
 
-            while (reader.LocalName != "exif")
+            if (reader.NodeType == System.Xml.XmlNodeType.Text)
             {
-                switch (reader.LocalName)
-                {
-                    case "raw":
-                        Raw = reader.ReadElementContentAsString();
-                        break;
-                    case "clean":
-                        Clean = reader.ReadElementContentAsString();
-                        break;
-                    default:
-                        UtilityMethods.CheckParsingException(reader);
-                        reader.Skip();
-                        break;
-                }
+                Text = reader.ReadContentAsString();
+                reader.Read();
             }
-
-            reader.Read();
         }
     }
 }

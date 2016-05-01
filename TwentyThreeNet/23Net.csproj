@@ -179,12 +179,10 @@
     <Compile Include="TwentyThree_MachineTags.cs" />
     <Compile Include="TwentyThree_MachineTagsAsync.cs" />
     <Compile Include="TwentyThree_NotesAsync.cs" />
-    <Compile Include="TwentyThree_PandaAsync.cs" />
     <Compile Include="TwentyThree_PeopleAsync.cs" />
     <Compile Include="TwentyThree_PhotosAsync.cs" />
     <Compile Include="TwentyThree_PhotosCommentsAsync.cs" />
     <Compile Include="TwentyThree_PhotosetsAsync.cs" />
-    <Compile Include="TwentyThree_PhotosGeoAsync.cs" />
     <Compile Include="TwentyThree_PhotosMiscAsync.cs" />
     <Compile Include="TwentyThree_PhotosPeople.cs" />
     <Compile Include="TwentyThree_PhotosPeopleAsync.cs" />
@@ -259,7 +257,6 @@
     <Compile Include="TwentyThree_Notes.cs" />
     <Compile Include="TwentyThree_PhotosComments.cs" />
     <Compile Include="TwentyThree_Photosets.cs" />
-    <Compile Include="TwentyThree_PhotosGeo.cs" />
     <Compile Include="TwentyThree_PhotosMisc.cs" />
     <Compile Include="TwentyThree_Prefs.cs" />
     <Compile Include="TwentyThree_Tags.cs" />
@@ -316,7 +313,6 @@
     <Compile Include="TwentyThree_Auth.cs" />
     <Compile Include="TwentyThree_Collections.cs" />
     <Compile Include="TwentyThree_GetResponse.cs" />
-    <Compile Include="TwentyThree_Panda.cs" />
     <Compile Include="TwentyThree_People.cs" />
     <Compile Include="TwentyThree_Photos.cs" />
     <Compile Include="TwentyThree_Places.cs" />

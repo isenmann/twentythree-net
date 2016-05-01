@@ -238,6 +238,62 @@ namespace TwentyThreeNet
         public string Description { get; set; }
 
         /// <summary>
+        /// Latitude. Will be 0 if Geo tags not specified.
+        /// </summary>
+        public double Latitude
+        {
+            get
+            {
+                double lat = 0;
+
+                if (Tags != null && Tags.Count > 0)
+                {
+                    foreach (var tag in Tags)
+                    {
+                        if (tag.Contains("geo:lat="))
+                        {
+                            lat = Double.Parse(tag.Replace("geo:lat=", ""), System.Globalization.NumberFormatInfo.InvariantInfo);
+                            break;
+                        }
+                    }
+                }
+
+                return lat;
+            }
+        }
+
+        /// <summary>
+        /// Longitude. Will be 0 if geo tags not specified.
+        /// </summary>
+        public double Longitude
+        {
+            get
+            {
+                double lon = 0;
+
+                if (Tags != null && Tags.Count > 0)
+                {
+                    foreach (var tag in Tags)
+                    {
+                        if (tag.Contains("geo:long="))
+                        {
+                            lon = Double.Parse(tag.Replace("geo:long=", ""), System.Globalization.NumberFormatInfo.InvariantInfo);
+                            break;
+                        }
+
+                        if (tag.Contains("geo:lon="))
+                        {
+                            lon = Double.Parse(tag.Replace("geo:lon=", ""), System.Globalization.NumberFormatInfo.InvariantInfo);
+                            break;
+                        }
+                    }
+                }
+
+                return lon;
+            }
+        }
+
+        /// <summary>
         /// If Geolocation information is returned for this photo then this will contain the permissions for who can see those permissions.
         /// </summary>
         public GeoPermissions GeoPermissions { get; set; }

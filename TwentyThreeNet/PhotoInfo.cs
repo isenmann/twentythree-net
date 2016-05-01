@@ -266,6 +266,62 @@ namespace TwentyThreeNet
         public GeoPermissions GeoPermissions { get; set; }
 
         /// <summary>
+        /// Latitude. Will be 0 if Geo tags not specified.
+        /// </summary>
+        public double Latitude
+        {
+            get
+            {
+                double lat = 0;
+
+                if (Tags != null && Tags.Count > 0)
+                {
+                    foreach (var tag in Tags)
+                    {
+                        if (tag.TagText.Contains("geo:lat="))
+                        {
+                            lat = Double.Parse(tag.TagText.Replace("geo:lat=", ""), System.Globalization.NumberFormatInfo.InvariantInfo);
+                            break;
+                        }
+                    }
+                }
+
+                return lat;
+            }
+        }
+
+        /// <summary>
+        /// Longitude. Will be 0 if geo tags not specified.
+        /// </summary>
+        public double Longitude
+        {
+            get
+            {
+                double lon = 0;
+
+                if (Tags != null && Tags.Count > 0)
+                {
+                    foreach (var tag in Tags)
+                    {
+                        if (tag.TagText.Contains("geo:long="))
+                        {
+                            lon = Double.Parse(tag.TagText.Replace("geo:long=", ""), System.Globalization.NumberFormatInfo.InvariantInfo);
+                            break;
+                        }
+
+                        if (tag.TagText.Contains("geo:lon="))
+                        {
+                            lon = Double.Parse(tag.TagText.Replace("geo:lon=", ""), System.Globalization.NumberFormatInfo.InvariantInfo);
+                            break;
+                        }
+                    }
+                }
+
+                return lon;
+            }
+        }
+
+        /// <summary>
         /// Does this photo contain tagged people.
         /// </summary>
         /// <remarks>Call <see cref="TwentyThree.PhotosPeopleGetList"/> to get the people found in this photo.</remarks>

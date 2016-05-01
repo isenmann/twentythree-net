@@ -21,19 +21,7 @@ namespace TwentyThreeNet
             parameters.Add("method", "flickr.blogs.getList");
             return GetResponseCache<BlogCollection>(parameters);
         }
-
-        /// <summary>
-        /// Return a list of Flickr supported blogging services.
-        /// </summary>
-        /// <returns></returns>
-        public BlogServiceCollection BlogsGetServices()
-        {
-            var parameters = new Dictionary<string, string>();
-            parameters.Add("method", "flickr.blogs.getServices");
-
-            return GetResponseCache<BlogServiceCollection>(parameters);
-        }
-
+        
         /// <summary>
         /// Posts a photo already uploaded to a blog.
         /// Requires authentication.

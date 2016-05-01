@@ -39,22 +39,6 @@ namespace TwentyThreeNet
         public string Farm { get; set; }
 
         /// <summary>
-        /// The path alias for this user, if set.
-        /// </summary>
-        public string PathAlias { get; set; }
-
-        /// <summary>
-        /// The original format of the image (e.g. jpg, png etc).
-        /// </summary>
-        public string OriginalFormat { get; set; }
-
-        /// <summary>
-        /// Optional extra field containing the original 'secret' of the 
-        /// photo used for forming the Url.
-        /// </summary>
-        public string OriginalSecret { get; set; }
-
-        /// <summary>
         /// The date the photo was uploaded (or 'posted').
         /// </summary>
         public DateTime DateUploaded { get; set; }
@@ -74,6 +58,11 @@ namespace TwentyThreeNet
         /// The number of views the photo has.
         /// </summary>
         public int ViewCount { get; set; }
+
+        /// <summary>
+        /// The ranking of the photo.
+        /// </summary>
+        public int Ranking { get; set; }
 
         /// <summary>
         /// The rotational information for this photo - in degrees.
@@ -267,7 +256,7 @@ namespace TwentyThreeNet
         /// The location information of this photo, if available.
         /// </summary>
         /// <remarks>
-        /// Will be null if the photo has no location information stored on Flickr.
+        /// Will be null if the photo has no location information stored on 23.
         /// </remarks>
         public PlaceInfo Location { get; set; }
 
@@ -283,86 +272,74 @@ namespace TwentyThreeNet
         public bool HasPeople { get; set; }
 
         /// <summary>
-        /// The Web url for flickr web page for this photo.
+        /// The Web url for 23 web page for this photo.
         /// </summary>
         public string WebUrl
         {
             get
             {
-                return string.Format(System.Globalization.CultureInfo.InvariantCulture, "http://www.23hq.com/{0}/photo/{1}", string.IsNullOrEmpty(PathAlias) ? OwnerUserId : PathAlias, PhotoId);
+                return string.Format(System.Globalization.CultureInfo.InvariantCulture, "http://www.23hq.com/user/{0}/photo/{1}", OwnerUserId, PhotoId);
             }
         }
 
         /// <summary>
-        /// The URL for the square thumbnail for the photo.
+        /// The URL for the 50 square thumbnail for the photo.
         /// </summary>
-        public string SquareThumbnailUrl
+        public string Quad50Url
         {
-            get { return UtilityMethods.UrlFormat(this, "_s", "jpg"); }
+            get { return UtilityMethods.UrlFormat(this, "quad50", "jpg"); }
         }
 
         /// <summary>
-        /// The URL for the thumbnail for the photo.
+        /// The URL for the 100 square thumbnail for the photo.
         /// </summary>
+        public string Quad100Url
+        {
+            get { return UtilityMethods.UrlFormat(this, "quad100", "jpg"); }
+        }
+
+        /// <summary>
+        /// The URL for the mini version of this photo.
+        /// </summary>
+        public string MiniUrl
+        {
+            get { return UtilityMethods.UrlFormat(this, "mini", "jpg"); }
+        }
+
+        /// <summary>
+        /// The URL for the thumbnail version of this photo.
+        /// </summary>
+        /// <remarks>
+        /// There is no guarentee that this size of the image actually exists.
+        /// Use <see cref="TwentyThree.PhotosGetSizes"/> to get a list of existing photo URLs.
+        /// </remarks>
         public string ThumbnailUrl
         {
-            get { return UtilityMethods.UrlFormat(this, "_t", "jpg"); }
+            get { return UtilityMethods.UrlFormat(this, "thumb", "jpg"); }
         }
 
         /// <summary>
-        /// The URL for the small version of this photo.
-        /// </summary>
-        public string SmallUrl
-        {
-            get { return UtilityMethods.UrlFormat(this, "_m", "jpg"); }
-        }
-
-        /// <summary>
-        /// The URL for the small 320 version of this photo.
+        /// The URL for the mblog    version of this photo.
         /// </summary>
         /// <remarks>
         /// There is no guarentee that this size of the image actually exists.
         /// Use <see cref="TwentyThree.PhotosGetSizes"/> to get a list of existing photo URLs.
         /// </remarks>
-        public string Small320Url
+        public string MblogUrl
         {
-            get { return UtilityMethods.UrlFormat(this, "_n", "jpg"); }
+            get { return UtilityMethods.UrlFormat(this, "mblog", "jpg"); }
         }
 
         /// <summary>
-        /// The URL for the medium version of this photo.
+        /// The URL for the standard version of this photo.
         /// </summary>
         /// <remarks>
         /// There is no guarentee that this size of the image actually exists.
         /// Use <see cref="TwentyThree.PhotosGetSizes"/> to get a list of existing photo URLs.
         /// </remarks>
-        public string MediumUrl
+        public string StandardUrl
         {
-            get { return UtilityMethods.UrlFormat(this, string.Empty, "jpg"); }
-        }
-
-        /// <summary>
-        /// The URL for the medium 640 version of this photo.
-        /// </summary>
-        /// <remarks>
-        /// There is no guarentee that this size of the image actually exists.
-        /// Use <see cref="TwentyThree.PhotosGetSizes"/> to get a list of existing photo URLs.
-        /// </remarks>
-        public string Medium640Url
-        {
-            get { return UtilityMethods.UrlFormat(this, "_z", "jpg"); }
-        }
-
-        /// <summary>
-        /// The URL for the medium 800 version of this photo.
-        /// </summary>
-        /// <remarks>
-        /// There is no guarentee that this size of the image actually exists.
-        /// Use <see cref="TwentyThree.PhotosGetSizes"/> to get a list of existing photo URLs.
-        /// </remarks>
-        public string Medium800Url
-        {
-            get { return UtilityMethods.UrlFormat(this, "_c", "jpg"); }
+            get { return UtilityMethods.UrlFormat(this, "standard", "jpg"); }
         }
 
         /// <summary>
@@ -374,32 +351,33 @@ namespace TwentyThreeNet
         /// </remarks>
         public string LargeUrl
         {
-            get { return UtilityMethods.UrlFormat(this, "_b", "jpg"); }
+            get { return UtilityMethods.UrlFormat(this, "large", "jpg"); }
         }
 
         /// <summary>
-        /// The URL for the large square version of this photo.
+        /// The URL for the 1000 large version of this photo.
         /// </summary>
         /// <remarks>
         /// There is no guarentee that this size of the image actually exists.
         /// Use <see cref="TwentyThree.PhotosGetSizes"/> to get a list of existing photo URLs.
         /// </remarks>
-        public string LargeSquareUrl
+        public string Large1kUrl
         {
-            get { return UtilityMethods.UrlFormat(this, "_q", "jpg"); }
+            get { return UtilityMethods.UrlFormat(this, "_large1k", "jpg"); }
         }
 
         /// <summary>
-        /// If <see cref="OriginalFormat"/> was returned then this will contain the url of the original file.
+        /// The URL for the original photo
         /// </summary>
+        /// <remarks>
+        /// There is no guarentee that this size of the image actually exists.
+        /// Use <see cref="TwentyThree.PhotosGetSizes"/> to get a list of existing photo URLs.
+        /// </remarks>
         public string OriginalUrl
         {
             get 
             {
-                if (string.IsNullOrEmpty(OriginalFormat))
-                    return null;
-
-                return UtilityMethods.UrlFormat(this, "_o", OriginalFormat);
+                return String.Format("http://www.23hq.com/{0}/photo/{1}/original", OwnerUserName, PhotoId);
             }
         }
 
@@ -470,9 +448,6 @@ namespace TwentyThreeNet
                         HasPeople = reader.GetAttribute("haspeople") == "1";
                         reader.Skip();
                         break;
-                    case "path_alias":
-                        PathAlias = reader.Value;
-                        break;
                     default:
                         UtilityMethods.CheckParsingException(reader);
                         reader.Skip();
@@ -502,12 +477,6 @@ namespace TwentyThreeNet
                     case "farm":
                         Farm = reader.Value;
                         break;
-                    case "originalformat":
-                        OriginalFormat = reader.Value;
-                        break;
-                    case "originalsecret":
-                        OriginalSecret = reader.Value;
-                        break;
                     case "dateuploaded":
                         DateUploaded = UtilityMethods.UnixTimestampToDate(reader.Value);
                         break;
@@ -519,6 +488,9 @@ namespace TwentyThreeNet
                         break;
                     case "views":
                         ViewCount = int.Parse(reader.Value, System.Globalization.NumberFormatInfo.InvariantInfo);
+                        break;
+                    case "ranking":
+                        Ranking = int.Parse(reader.Value, System.Globalization.NumberFormatInfo.InvariantInfo);
                         break;
                     case "rotation":
                         Rotation = int.Parse(reader.Value, System.Globalization.NumberFormatInfo.InvariantInfo);
@@ -741,9 +713,6 @@ namespace TwentyThreeNet
                         break;
                     case "iconfarm":
                         OwnerIconFarm = reader.Value;
-                        break;
-                    case "path_alias":
-                        PathAlias = string.IsNullOrEmpty(reader.Value) ? null : reader.Value;
                         break;
                     default:
                         UtilityMethods.CheckParsingException(reader);

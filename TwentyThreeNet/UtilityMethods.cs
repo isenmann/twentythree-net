@@ -353,18 +353,12 @@ namespace TwentyThreeNet
 
         internal static string UrlFormat(Photo p, string size, string extension)
         {
-            if (size == "_o" || size == "original")
-                return UrlFormat(p.Farm, p.Server, p.PhotoId, p.OriginalSecret, size, extension);
-            else
-                return UrlFormat(p.Farm, p.Server, p.PhotoId, p.Secret, size, extension);
+            return UrlFormat(p.Farm, p.Server, p.PhotoId, p.Secret, size, extension);
         }
 
         internal static string UrlFormat(PhotoInfo p, string size, string extension)
         {
-            if (size == "_o" || size == "original")
-                return UrlFormat(p.Farm, p.Server, p.PhotoId, p.OriginalSecret, size, extension);
-            else
-                return UrlFormat(p.Farm, p.Server, p.PhotoId, p.Secret, size, extension);
+            return UrlFormat(p.Farm, p.Server, p.PhotoId, p.Secret, size, extension);
         }
 
         internal static string UrlFormat(Photoset p, string size, string extension)
@@ -377,23 +371,32 @@ namespace TwentyThreeNet
             string sizeAbbreviation;
             switch (size)
             {
-                case "square":
-                    sizeAbbreviation = "_s";
+                case "quad50":
+                    sizeAbbreviation = "_quad50";
                     break;
-                case "thumbnail":
-                    sizeAbbreviation = "_t";
+                case "quad100":
+                    sizeAbbreviation = "_quad100";
                     break;
-                case "small":
-                    sizeAbbreviation = "_m";
+                case "mini":
+                    sizeAbbreviation = "_mini";
+                    break;
+                case "thumb":
+                    sizeAbbreviation = "_thumb";
+                    break;
+                case "mblog":
+                    sizeAbbreviation = "_mblog";
+                    break;
+                case "standard":
+                    sizeAbbreviation = "_standard";
                     break;
                 case "large":
-                    sizeAbbreviation = "_b";
+                    sizeAbbreviation = "_large";
+                    break;
+                case "large1k":
+                    sizeAbbreviation = "_large1k";
                     break;
                 case "original":
                     sizeAbbreviation = "_o";
-                    break;
-                case "medium":
-                    sizeAbbreviation = string.Empty;
                     break;
                 default: 
                     sizeAbbreviation = size;

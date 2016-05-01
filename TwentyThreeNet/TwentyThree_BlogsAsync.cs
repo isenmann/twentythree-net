@@ -23,18 +23,6 @@ namespace TwentyThreeNet
         }
 
         /// <summary>
-        /// Return a list of Flickr supported blogging services.
-        /// </summary>
-        /// <param name="callback">Callback method to call upon return of the response from Flickr.</param>
-        public void BlogsGetServicesAsync(Action<TwentyThreeResult<BlogServiceCollection>> callback)
-        {
-            var parameters = new Dictionary<string, string>();
-            parameters.Add("method", "flickr.blogs.getServices");
-
-            GetResponseAsync<BlogServiceCollection>(parameters, callback);
-        }
-
-        /// <summary>
         /// Posts a photo already uploaded to a blog.
         /// Requires authentication.
         /// </summary>

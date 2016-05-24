@@ -39,15 +39,26 @@ namespace TwentyThreeNet
             else
                 return DownloadData(method, baseUrl, data, PostContentType, null);
         }
-        
+
+        private class WebClientLongWaiting : WebClient
+        {
+            protected override WebRequest GetWebRequest(Uri uri)
+            {
+                WebRequest w = base.GetWebRequest(uri);
+                w.Timeout = Convert.ToInt32(TimeSpan.FromMinutes(5).TotalMilliseconds);
+                return w;
+            }
+        }
+
 #if !WindowsCE
         private static string DownloadData(string method, string baseUrl, string data, string contentType, string authHeader)
         {
             Func<string> f = () =>
             {
-                using (WebClient client = new WebClient())
+                using (WebClientLongWaiting client = new WebClientLongWaiting())
                 {
                     client.Encoding = Encoding.UTF8;
+
                     if (!string.IsNullOrEmpty(contentType)) client.Headers.Add("Content-Type", contentType);
                     if (!string.IsNullOrEmpty(authHeader)) client.Headers.Add("Authorization", authHeader);
 
@@ -55,6 +66,7 @@ namespace TwentyThreeNet
                     {
                         return client.UploadString(baseUrl, data);
                     }
+
                     return client.DownloadString(baseUrl);
                 }
             };

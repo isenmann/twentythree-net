@@ -43,6 +43,11 @@ namespace TwentyThreeNet
         public long Photos { get; set; }
 
         /// <summary>
+        /// True if the group is for user with an age over 18
+        /// </summary>
+        public bool IsEighteenPlus { get; set; }
+
+        /// <summary>
         /// The URL for the group icon.
         /// </summary>
         public string GroupIconUrl
@@ -80,7 +85,7 @@ namespace TwentyThreeNet
                     case "privacy":
                         Privacy = (PoolPrivacy)Enum.Parse(typeof(PoolPrivacy), reader.Value, true);
                         break;
-                    case "iconserver":
+                    case "iconsserver":
                         IconServer = reader.Value;
                         break;
                     case "iconfarm":
@@ -101,6 +106,9 @@ namespace TwentyThreeNet
                         break;
                     case "topic_count":
                         TopicCount = reader.ReadContentAsInt();
+                        break;
+                    case "eighteenplus":
+                        IsEighteenPlus = reader.Value == "1";
                         break;
                     default:
                         UtilityMethods.CheckParsingException(reader);

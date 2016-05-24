@@ -328,6 +328,7 @@ namespace TwentyThreeNet
             {
                 switch (reader.LocalName)
                 {
+                    case "photo":
                     case "id":
                         PhotoId = reader.Value;
                         if (string.IsNullOrEmpty(reader.Value))

@@ -7,3 +7,7 @@
 /.vs/TwentyThreeNet/v14/.suo
 /DemoApplication/bin/Debug
 /DemoApplication/obj/Debug
+/TwentyThreeNet/bin/Release
+/TwentyThreeNet/obj/Release
+/DemoApplication/bin/Release
+/DemoApplication/obj/Release

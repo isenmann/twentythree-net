@@ -18,7 +18,11 @@ namespace TwentyThreeNet
         /// <summary>Does the user posses a pro account.
         /// 0 = free acouunt, 1 = pro account holder.</summary>
         public bool IsPro { get; set; }
-    
+
+        /// <summary>Does the user posses a admin account.
+        /// 0 = normal acouunt, 1 = admin account</summary>
+        public bool IsAdmin { get; set; }
+
         /// <summary>The server that will serve up the users Buddy Icon.</summary>
         public string IconServer { get; set; }
 
@@ -208,6 +212,9 @@ namespace TwentyThreeNet
                         break;
                     case "ispro":
                         IsPro = reader.Value == "1";
+                        break;
+                    case "isadmin":
+                        IsAdmin = reader.Value == "1";
                         break;
                     case "iconserver":
                         IconServer = reader.Value;

@@ -71,6 +71,9 @@ namespace TwentyThreeNet
                     case "title":
                         Title = reader.Value;
                         break;
+                        // ignoring username
+                    case "username":
+                        break;
                     default:
                         UtilityMethods.CheckParsingException(reader);
                         break;

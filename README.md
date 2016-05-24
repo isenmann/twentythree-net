@@ -70,3 +70,6 @@ You can contact me via email, which is public on my profile page here on github 
 
 See my 23 homepage at http://www.23hq.com/ise_80
 
+# Donations
+
+If you want to support me, you can donate at: https://www.paypal.me/danielisenmann
